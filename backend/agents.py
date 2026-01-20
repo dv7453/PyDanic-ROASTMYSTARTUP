@@ -11,7 +11,7 @@ model = MistralModel(MODEL_NAME)
 
 # --- Existing Agents ---
 
-from .models import (
+from models import (
     PitchAnalysis,
     AssumptionsList,
     FailureSimulation,

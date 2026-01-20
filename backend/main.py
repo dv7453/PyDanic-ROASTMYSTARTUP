@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 import asyncio
 
-from .models import (
+from models import (
     PitchAnalysis,
     Assumption,
     AssumptionsList,
@@ -12,7 +12,7 @@ from .models import (
     RoastRound,
     Verdict
 )
-from .agents import (
+from agents import (
     pitch_decomposition_agent,
     assumption_extraction_agent,
     failure_simulation_agent,
