@@ -1,0 +1,14 @@
+INFO:     Will watch for changes in these directories: ['/Users/dhruvvadhiya/Desktop/Assignment-2/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [66104] using WatchFiles
+INFO:     Started server process [66159]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:49907 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49986 - "OPTIONS /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49986 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49995 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50104 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50158 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50180 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50180 - "POST /chat HTTP/1.1" 200 OK
