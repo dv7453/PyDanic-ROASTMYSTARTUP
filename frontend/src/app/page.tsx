@@ -30,8 +30,8 @@ export default function Home() {
         setLoading(true);
 
         try {
-            const isPitch = !analysisContextStr;
-            const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            // hardcoded for stability during submission
+            const API_URL = 'https://pydanic-roastmystartup.onrender.com';
             const endpoint = isPitch ? `${API_URL}/analyze` : `${API_URL}/chat`;
 
             const body = isPitch
