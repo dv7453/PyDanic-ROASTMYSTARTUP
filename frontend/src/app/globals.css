@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+:root {
+  /* War Room Color Palette */
+  --bg-void: #050505;
+  --bg-deep: #0a0a0a;
+  --bg-surface: #111111;
+  --bg-elevated: #1a1a1a;
+
+  --accent-blood: #dc2626;
+  --accent-ember: #b91c1c;
+  --accent-glow: #ef4444;
+
+  --accent-cyber: #06b6d4;
+  --accent-electric: #22d3ee;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #525252;
+
+  --border-subtle: #262626;
+  --border-active: #404040;
+
+  /* Animations */
+  --animate-progress: progress 2s linear infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+  --animate-scanline: scanline 8s linear infinite;
+}
+
+@theme inline {
+  --color-background: var(--bg-void);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  @keyframes progress {
+    0% {
+      transform: scaleX(0);
+    }
+
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px var(--accent-blood), 0 0 10px transparent;
+    }
+
+    100% {
+      box-shadow: 0 0 20px var(--accent-blood), 0 0 40px var(--accent-ember);
+    }
+  }
+
+  @keyframes pulse-slow {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes typing {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+/* Base Styles */
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Noise Texture Overlay */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* Utility Classes */
+.glow-red {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), 0 0 40px rgba(220, 38, 38, 0.1);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(6, 182, 212, 0.1);
+}
+
+.border-glow-red {
+  border-color: var(--accent-blood);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.2);
+}
+
+.border-glow-cyan {
+  border-color: var(--accent-cyber);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+/* Gradient Text */
+.text-gradient-blood {
+  background: linear-gradient(135deg, var(--accent-glow), var(--accent-ember));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scanline Effect */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Terminal Header Dots */
+.terminal-dots::before {
+  content: '● ● ●';
+  color: var(--accent-blood);
+  font-size: 8px;
+  letter-spacing: 4px;
+  opacity: 0.7;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-active);
+}
+
+/* Input Focus Glow */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-blood) !important;
+  box-shadow: 0 0 0 1px var(--accent-blood), 0 0 20px rgba(220, 38, 38, 0.2);
+}
+
+/* Animated Badge */
+.badge-fatal {
+  animation: pulse-slow 2s ease-in-out infinite;
+  background: linear-gradient(135deg, var(--accent-ember), var(--accent-blood));
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
