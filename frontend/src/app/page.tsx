@@ -31,7 +31,8 @@ export default function Home() {
 
         try {
             const isPitch = !analysisContextStr;
-            const endpoint = isPitch ? 'http://localhost:8000/analyze' : 'http://localhost:8000/chat';
+            const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            const endpoint = isPitch ? `${API_URL}/analyze` : `${API_URL}/chat`;
 
             const body = isPitch
                 ? { pitch: input, intensity: 'Normal' }
